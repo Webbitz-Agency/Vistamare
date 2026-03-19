@@ -307,7 +307,7 @@ const Menu = () => {
               Il menù degustazione viene servito per tutti i componenti del tavolo.
               </p>
             </ScrollReveal>
-            <p className={styles.priceHighlight} style={{fontStyle: "italic"}}>60€ vini esclusi</p>
+            <p className={styles.priceHighlight} style={{fontStyle: "italic"}}>80€ vini esclusi</p>
           </div>
         </div>
       </section>
