@@ -109,10 +109,10 @@ const menuData = {
     dishes: [
       {
         id: 11,
-        name: "Zuppetta dell'orto e uovo pochè",
-        description: "Zuppetta dell'orto e uovo pochè",
+        name: "Calamaro alla brace",
+        description: "Calamaro alla brace in salsa di datterino e provola",
         price: "€24",
-        allergens: ["uova", "frutta"]
+        allergens: ["pesce", "latte"]
       },
       {
         id: 12,

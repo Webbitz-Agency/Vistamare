@@ -120,24 +120,10 @@ const menuData = {
     dishes: [
       {
         id: 11,
-        name: "Zuppetta dell'orto e uovo pochè",
-        description: "Zuppetta dell'orto e uovo pochè",
-        price: "€26",
-        allergens: ["uova", "frutta"]  // 3, 9
-      },
-      {
-        id: 12,
-        name: "Seppie al burro nocciola e limone",
-        description: "Seppie dorate al burro nocciola e limone",
-        price: "€26",
-        allergens: ["glutine", "latte", "molluschi"]  // 1, 7, 14
-      },
-      {
-        id: 13,
-        name: "Rombo alla brace e funghi Shiitake",
-        description: "Filetto di rombo alla brace e funghi Shiitake",
-        price: "€35",
-        allergens: ["pesce"]  // 4
+        name: "Calamaro alla brace",
+        description: "Calamaro alla brace in salsa di datterino e provola",
+        price: "€24",
+        allergens: ["pesce", "latte"]  // 4, 11
       },
       {
         id: 14,
