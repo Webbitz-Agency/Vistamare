@@ -9,10 +9,12 @@ import { registerLocale } from 'react-datepicker';
 import it from 'date-fns/locale/it';
 import { format, isToday, isBefore, addDays } from 'date-fns';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 registerLocale('it', it);
 
 const ReservationForm = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -27,7 +29,6 @@ const ReservationForm = () => {
 
   const [currentStep, setCurrentStep] = useState(1);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showSuccess, setShowSuccess] = useState(false);
   const [availableTimes, setAvailableTimes] = useState([]);
   const [errors, setErrors] = useState({});
   const [showPolicyModal, setShowPolicyModal] = useState(false);
@@ -196,8 +197,6 @@ const ReservationForm = () => {
       
       // Preparazione del corpo dell'email
       const emailBody = {
-        from: "reservationwebbitz@gmail.com",
-        to: "vistamarerosignano@gmail.com",
         subject: `Prenotazione ${formData.mealType === 'lunch' ? 'Pranzo' : 'Cena'} - ${formData.name} - ${formattedDate}`,
         text: `
           Nuova prenotazione:
@@ -223,7 +222,7 @@ const ReservationForm = () => {
       
       if (response.status === 200) {
         setIsSubmitting(false);
-        setShowSuccess(true);
+        navigate('/grazie', { replace: true });
       } else {
         throw new Error('Errore nell\'invio dell\'email');
       }
@@ -316,26 +315,6 @@ const ReservationForm = () => {
         </div>
 
         <AnimatePresence mode="wait">
-          {showSuccess ? (
-            <motion.div
-              key="success"
-              className={styles.successMessage}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 0.8 }}
-            >
-              <motion.div
-                className={styles.checkmark}
-                initial={{ scale: 0 }}
-                animate={{ scale: 1 }}
-                transition={{ delay: 0.2 }}
-              >
-                ✓
-              </motion.div>
-              <h3>Abbiamo ricevuto la tua richiesta!</h3>
-              <p>Ti contatteremo a breve per confermare la prenotazione. Grazie. </p>
-            </motion.div>
-          ) : (
             <motion.form
               key="form"
               className={styles.form}
@@ -577,7 +556,6 @@ const ReservationForm = () => {
                 <a href="#" onClick={openPolicyModal}>Restaurant Policy</a>
               </motion.div>
             </motion.form>
-          )}
         </AnimatePresence>
       </motion.div>
       

@@ -1,0 +1,119 @@
+.page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #04062d;
+}
+
+/* Riserva l’altezza dell’header fisso: così lo sfondo dell’hero inizia sotto la barra, non “sotto” in sovrapposizione */
+.main {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  padding-top: calc(70px + env(safe-area-inset-top, 0px));
+  box-sizing: border-box;
+}
+
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1 1 auto;
+  /* Altezza dell’area visibile sotto l’header: quasi tutto il primo schermo è foto */
+  min-height: calc(100svh - 70px - env(safe-area-inset-top, 0px));
+  padding: 2rem 1.25rem 2.5rem;
+  background-image: url('/assets/img_scelte/26.png');
+  background-size: cover;
+  /* Punto focale leggermente più basso così non “taglia” il cielo/chiaro in alto */
+  background-position: center 42%;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* Velatura leggera sull’intera foto: la foto resta ben visibile */
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(4, 6, 45, 0.42) 0%,
+    rgba(4, 6, 45, 0.22) 45%,
+    rgba(4, 6, 45, 0.48) 100%
+  );
+  pointer-events: none;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: 36rem;
+  margin: 0 auto;
+}
+
+.card {
+  padding: 1.75rem 1.35rem;
+  border-radius: 14px;
+  background: rgba(13, 17, 38, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+  text-align: center;
+}
+
+.title {
+  margin: 0 0 1rem;
+  color: #6bcfff;
+  font-family: 'Roboto', sans-serif;
+  font-size: clamp(1.9rem, 6.5vw, 2.45rem);
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  line-height: 1.2;
+  text-shadow:
+    0 2px 20px rgba(0, 0, 0, 0.75),
+    0 0 1px rgba(0, 0, 0, 0.9);
+}
+
+.text {
+  margin: 0 0 1.35rem;
+  color: #f4f7ff;
+  font-family: var(--font-body, 'Roboto', sans-serif);
+  font-size: clamp(0.92rem, 3.4vw, 1.08rem);
+  line-height: 1.65;
+  letter-spacing: 0.03em;
+  font-weight: 400;
+  text-transform: none;
+  text-shadow: 0 1px 14px rgba(0, 0, 0, 0.65);
+}
+
+.link {
+  display: inline-block;
+  color: #9bddff;
+  font-family: var(--font-heading, 'Roboto', sans-serif);
+  font-size: clamp(0.92rem, 3vw, 1.05rem);
+  font-weight: 500;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.6);
+  transition: color 0.2s ease;
+}
+
+.link:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem 1.1rem 2rem;
+    background-position: center 38%;
+  }
+
+  .card {
+    padding: 1.5rem 1.1rem;
+  }
+}
