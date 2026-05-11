@@ -29,38 +29,43 @@ const menuData = {
     dishes: [
       {
         id: 1,
-        name: "Ricciola dry, ristretto e lattuga di mare",
-        description: "Ricciola in maturazione dry, ristretto di pesce e lattuga di mare",
+        name: "Mazzancolle locale marinata",
+        description:
+          "Mazzancolle locale marinata su specchio di datterino giallo e sentori di macchia mediterranea all'elicriso",
         price: "€20",
-        allergens: ["pesce"]  // 2, 4
+        allergens: ["crostacei"]
       },
       {
         id: 2,
-        name: "Spigola e pannocchia citrus-soy dressing",
-        description: "Spigola e pannocchia citrus-soy dressing",
-        price: "€18",
-        allergens: ["pesce", "soia"]  // 2, 4, 6, 11
+        name: "Rosa di palamita",
+        description:
+          "Rosa di palamita: battuta al coltello su tappeto di petali di maggio e gocce di rugiada al lime",
+        price: "€20",
+        allergens: ["pesce"]
       },
       {
         id: 3,
-        name: "Capesante e rana pescatrice alla brace",
-        description: "Capesante e rana pescatrice alla brace",
-        price: "€24",
-        allergens: ["pesce", "molluschi"]  // 4, 14
+        name: "Capesante scottate",
+        description:
+          "Capesante scottate sulla carbonella, fondo di cozze del Tirreno e clorofilla di prezzemolo",
+        price: "€22",
+        allergens: ["pesce", "molluschi"]
       },
       {
         id: 4,
-        name: "Patata pavèe, scorfano e tartufo nero",
-        description: "Patata pavèe, scorfano e tartufo nero pregiato",
-        price: "€24",
-        allergens: ["pesce"]  // 4
+        name: "Nido di rombo o passera di mare",
+        description:
+          "Nido di rombo o passera di mare alla julienne con infusione acida al limone e pepe bianco",
+        price: "€20",
+        allergens: ["pesce"]
       },
       {
         id: 5,
-        name: "Tagliatelline passera o rombo al vapore",
-        description: "Tagliatelline di passera di mare o rombo al vapore con vinaigrette al lime e finocchio di mare",
-        price: "€22",
-        allergens: ["pesce", "glutine"]  // 4
+        name: "Carpaccio di scorfano e anatra",
+        description:
+          "Carpaccio di scorfano e anatra con nespole e ciliegie di ricotta vaccina",
+        price: "€24",
+        allergens: ["pesce", "latte"]
       }
     ]
   },
@@ -69,38 +74,43 @@ const menuData = {
     dishes: [
       {
         id: 6,
-        name: "Spaghettone riccio e ostriche",
-        description: "Spaghettone riccio e ostriche",
-        price: "€28",
-        allergens: ["glutine", "molluschi"]
-      },
-      {
-        id: 7,
-        name: "Mezzi paccheri frutti di mare e zafferano",
-        description: "Mezzi paccheri ai frutti di mare e pistilli di zafferano",
+        name: "Bottoni «Scrigno di mare»",
+        description:
+          "Bottoni di pasta all'uovo «Scrigno di mare» al riccio puro in guazzetto di ristretto di scoglio",
         price: "€26",
         allergens: ["glutine", "crostacei", "pesce", "molluschi"]
       },
       {
+        id: 7,
+        name: "Fettuccine all'acqua di mare",
+        description:
+          "Fettuccine all'acqua di mare: pasta fresca con sentori di alghe brune e scorfano locale",
+        price: "€25",
+        allergens: ["glutine", "pesce"]
+      },
+      {
         id: 8,
-        name: "Eliche triglie e sgombro",
-        description: "Eliche triglie e sgombro",
+        name: "Paccheri dei Maestri Gragnanesi",
+        description:
+          "Paccheri dei Maestri Gragnanesi in guazzetto di pescato e pomodorini del Piennolo",
         price: "€24",
         allergens: ["glutine", "pesce"]
       },
       {
         id: 9,
-        name: "Reginette in zuppetta di pesce di scoglio",
-        description: "Reginette in zuppetta di pesce di scoglio",
-        price: "€24",
-        allergens: ["glutine", "pesce", "molluschi"]
+        name: "Lasagnetta aperta",
+        description:
+          "Lasagnetta aperta di pasta fresca all'uovo con vongole, mazzancolle e julienne di calamari",
+        price: "€26",
+        allergens: ["glutine", "crostacei", "uova", "molluschi"]
       },
       {
         id: 10,
-        name: "Linguine con astice blù",
-        description: "Linguine con astice blù",
-        price: "€35",
-        allergens: ["glutine", "crostacei"]
+        name: "Risotto Riserva «San Massimo»",
+        description:
+          "Risotto Riserva «San Massimo», fondo di volatile e cannolicchi di nassa",
+        price: "€25",
+        allergens: ["molluschi"]
       }
     ]
   },
@@ -109,38 +119,42 @@ const menuData = {
     dishes: [
       {
         id: 11,
-        name: "Calamaro alla brace",
-        description: "Calamaro alla brace in salsa di datterino e provola",
-        price: "€24",
-        allergens: ["pesce", "latte"]
+        name: "Assoluto di seppia",
+        description: "Assoluto di seppia e il suo inchiostro",
+        price: "€22",
+        allergens: ["pesce", "molluschi"]
       },
       {
         id: 12,
-        name: "Seppie al burro nocciola e limone",
-        description: "Seppie dorate al burro nocciola e limone",
-        price: "€24",
-        allergens: ["glutine", "latte", "molluschi"]
-      },
-      {
-        id: 13,
-        name: "Rombo alla brace e funghi Shiitake",
-        description: "Filetto di rombo alla brace e funghi Shiitake",
+        name: "L'Essenza",
+        description:
+          "L'Essenza: sashimi di pescato locale in purezza, sale integrale e olio monocultivar",
         price: "€28",
         allergens: ["pesce"]
       },
       {
+        id: 13,
+        name: "Trancio di rombo o passera di mare",
+        description:
+          "Trancio di rombo chiodato o passera di mare alla brace di legna con giardino di agretti al vapore",
+        price: "€25",
+        allergens: ["pesce"]
+      },
+      {
         id: 14,
-        name: "Sashimi barbabietola e palamita",
-        description: "Sashimi di barbabietola e palamita in salsa di mare",
+        name: "Ala di razza in tempura",
+        description:
+          "Ala di razza in tempura croccante e specchio di acqua di peperone arrostito",
         price: "€24",
-        allergens: ["crostacei", "pesce", "soia", "molluschi"]
+        allergens: ["glutine", "pesce"]
       },
       {
         id: 15,
-        name: "Dentice fritto, tonno Evoluzione e peperoni",
-        description: "Trancio di dentice fritto, carpaccio di tonno \"Evoluzione\" e acqua di peperoni grigliati",
-        price: "€30",
-        allergens: ["glutine", "pesce"]
+        name: "Coda di ombrina scottata",
+        description:
+          "Coda di ombrina scottata, velo di lardo di Colonnata e il suo fondo",
+        price: "€26",
+        allergens: ["pesce"]
       },
       {
         id: 16,
@@ -163,8 +177,9 @@ const menuData = {
     dishes: [
       {
         id: 18,
-        name: "Contorni del giorno",
-        description: "I nostri contorni variano ogni giorno a seconda della reperibilità e della stagionalità. Chiedere al personale di sala.",
+        name: "Contorni stagionali",
+        description:
+          "I nostri contorni variano ogni giorno a seconda della reperibilità e della stagionalità. Chiedere al personale di sala.\n\nLa nostra cucina utilizza rigorosamente pesce fresco e locale ed è quindi suscettibile alle condizioni del mare. In tal caso, potremmo usare prodotti surgelati a bordo.",
         price: "",
         allergens: []
       }
