@@ -9,7 +9,7 @@ import TripAdvisorReviews from '../components/TripAdvisorReviews';
 import AnimatedText from '../components/AnimatedText';
 import ScrollReveal from '../components/ScrollReveal';
 
-// Importazione delle immagini degli allergeni
+// Immagini statiche degli allergeni
 import latteIcon from '../assets/latte.png';
 import glutineIcon from '../assets/glutine.png';
 import arachidiIcon from '../assets/arachidi.png';
