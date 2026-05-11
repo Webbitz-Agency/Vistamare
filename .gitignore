@@ -8,5 +8,9 @@
 /build
 /.vite
 
+# Next.js (rigenerata da `next dev` / `next build`: puoi cancellarla quando vuoi)
+/.next/
+/out/
+
 # ambiente
 .env
