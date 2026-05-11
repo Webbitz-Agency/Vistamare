@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './TripAdvisorReviews.module.css';
 
-// Componente per mostrare le recensioni di TripAdvisor
+// Componente per mostrare il widget recensioni di TripAdvisor
 const TripAdvisorReviews = () => {
   const [isLoading, setIsLoading] = useState(true);
   
