@@ -20,7 +20,7 @@ import fruttaIcon from '../assets/frutta.png';
 import pesceIcon from '../assets/pesce.png';
 import soiaIcon from '../assets/soia.png';
 
-// Percorsi delle immagini per gli allergeni
+// Associazione allergene → icona (asset importati sopra)
 const allergensIcons = {
   soia: soiaIcon,
   latte: latteIcon,
