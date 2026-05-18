@@ -49,6 +49,7 @@ export default function Document() {
         <link rel="manifest" href="/manifest.json" />
         
         {/* Meta per crawling */}
+        <meta name="facebook-domain-verification" content="wzk12k59ztwfprpu20b2ixcqq8gqxc" />
         <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         
