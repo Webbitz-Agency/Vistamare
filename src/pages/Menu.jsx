@@ -33,7 +33,7 @@ const allergensIcons = {
   pesce: pesceIcon
 };
 
-// Dati piatti - aggiorno con allergie e immagini galleria
+// Elenco piatti con allergeni e immagini galleria
 const menuData = {
   antipasti: {
     title: "GLI ANTIPASTI",
