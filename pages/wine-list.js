@@ -101,7 +101,7 @@ export default function WineList() {
       <section className={styles.degustazioneSection} style={{height: "600px"}}>
         <div className={styles.imagePart}>
           <img 
-            src={isMobile ? "/assets/cantina1.png" : "/assets/img_scelte/27.png"} 
+            src={isMobile ? "/assets/cantina1.png" : "/assets/img_scelte/27.webp"} 
             alt="Wine selection" 
             className={styles.degustazioneImage} 
           />

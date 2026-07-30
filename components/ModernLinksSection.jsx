@@ -10,7 +10,7 @@ export default function ModernLinksSection() {
       <Link
         href="/menu"
         className={`${styles.card} ${(router?.pathname || '') === '/menu' ? styles.active : ''}`}
-        style={{ backgroundImage: `url(/assets/1.png)` }}
+        style={{ backgroundImage: `url(/assets/1.webp)` }}
       >
         <div className={styles.cardOverlay}></div>
         <div className={styles.cardContent}>

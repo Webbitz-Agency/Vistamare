@@ -1,12 +1,26 @@
-# React + Vite
+# Ristorante Vistamare — sito web
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Sito del ristorante Vistamare (Rosignano Solvay). Next.js 16 (Pages Router) + React 19, CSS Modules, Framer Motion, deploy su Vercel.
 
-Currently, two official plugins are available:
+## Comandi
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+npm run dev    # sviluppo su http://localhost:3000
+npm run build  # build di produzione
+```
 
-## Expanding the ESLint configuration
+## Variabili d'ambiente (obbligatorie per il form prenotazioni)
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Vedi `.env.local` (non versionato). Da configurare anche su Vercel:
+
+- `GMAIL_USER` — account Gmail mittente
+- `GMAIL_APP_PASSWORD` — app password Gmail (mai committarla)
+- `RESERVATION_TO_EMAIL` — opzionale, destinatario alternativo per test
+
+## Note sulla struttura
+
+- `pages/` + `components/` (root) = versione Next.js attiva.
+- `src/` contiene i residui della vecchia versione Vite: i `.jsx` sono morti,
+  ma **i CSS Modules, `index.css`, `App.css` e `src/fonts/` sono ancora usati**
+  dalle pagine attive. Non cancellare `src/` in blocco.

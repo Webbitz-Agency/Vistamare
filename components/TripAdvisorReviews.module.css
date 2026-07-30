@@ -1,232 +1,264 @@
+/* Sezione recensioni TripAdvisor — coerente con la palette e la tipografia del sito */
+
 .tripAdvisorSection {
-  padding: 1.5rem 1rem;
-  background-color: #f2f7fa;
-  position: relative;
-  z-index: 10;
-  border-top: 1px solid #e0e8ef;
-  border-bottom: 1px solid #e0e8ef;
+  background: var(--white);
+  padding: 5rem 1rem;
 }
 
 .tripAdvisorWrapper {
   max-width: 900px;
   margin: 0 auto;
-  background-color: white;
-  border-radius: 8px;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
+  text-align: center;
 }
 
-.tripAdvisorHeader {
-  background: linear-gradient(135deg, #006864 0%, #00a680 100%);
-  padding: 0.75rem 1.25rem;
+/* --- Header: titolo + logo --- */
+.header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  color: white;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
 }
 
 .sectionTitle {
   font-family: var(--font-heading);
-  font-size: 1.2rem;
   font-weight: 500;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  color: var(--blue-dark);
+  text-transform: uppercase;
+  letter-spacing: 5px;
   margin: 0;
-  letter-spacing: 1px;
+}
+
+.taLogoLink {
+  display: inline-block;
+  line-height: 0;
 }
 
 .taLogo {
-  max-width: 130px;
-  height: 30px;
+  height: 28px;
+  width: auto;
 }
 
-.taLogo img {
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  
-}
-
-.widgetWrapper {
-  padding: 1rem;
-  min-height: 100px;
-  position: relative;
-}
-
-.taWidget {
-  width: 100%;
-}
-
-.placeholderBox {
-  width: 100%;
-  height: 120px;
+/* --- Riga rating --- */
+.ratingRow {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #5dff4a;
-  border-radius: 4px;
+  gap: 0.8rem;
+  margin-bottom: 2.5rem;
+  font-family: var(--font-body);
 }
 
-.loading {
-  color: #667780;
-  font-style: italic;
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-size: 0.9rem;
-}
-
-.loading::before {
-  content: '';
-  display: block;
-  width: 1rem;
-  height: 1rem;
-  border: 2px solid #e0e8ef;
-  border-top-color: #00a0d2;
-  border-radius: 50%;
-  animation: spinner 0.8s linear infinite;
-}
-
-@keyframes spinner {
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-.reviewLinkContainer {
-  display: flex;
-  justify-content: center;
-  padding: 0.75rem;
-  border-top: 1px solid #f2f7fa;
-}
-
-.writeReviewBtn {
-  display: inline-block;
-  background-color: #00a680;
-  color: white;
-  padding: 0.75rem 1.5rem;
-  border-radius: 4px;
-  text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  letter-spacing: 0.5px;
-  box-shadow: 0 2px 4px rgba(0, 166, 128, 0.2);
-}
-
-.writeReviewBtn:hover {
-  background-color: #006864;
-  transform: translateY(-1px);
-  box-shadow: 0 3px 6px rgba(0, 104, 100, 0.3);
-}
-
-/* Personalizzazioni CSS spostati in global CSS */
-
-@media (max-width: 768px) {
-  .tripAdvisorSection {
-    padding: 1.5rem 1rem;
-  }
-  
-  .tripAdvisorHeader {
-    padding: 0.75rem 1rem;
-  }
-  
-  .sectionTitle {
-    font-size: 1.1rem;
-  }
-  
-  .taLogo {
-    max-width: 120px;
-    height: 30px;
-  }
-  
-  .widgetWrapper {
-    padding: 0.75rem;
-  }
-  
-  .writeReviewBtn {
-    padding: 0.6rem 1.2rem;
-    font-size: 0.8rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .tripAdvisorHeader {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-  
-  .taLogo {
-    align-self: flex-end;
-  }
-}
-
-.reviewsLinkBox {
-  width: 100%;
-  padding: 0.75rem;
-  background-color: #e3ffe4;
-  border-radius: 6px;
-  margin-top: 0.5rem;
-  text-align: center;
-}
-
-.starsRow {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  margin-bottom: 0.8rem;
-}
-
-.ratingText {
-  font-size: 1.2rem;
-  font-weight: bold;
-  color: #00a680;
-}
-
-.stars {
-  display: flex;
-  color: #00a680;
-  font-size: 1.1rem;
-  line-height: 1;
-}
-
-.halfStar {
-  position: relative;
-  display: inline-block;
-  color: #e0e0e0;
-}
-
-.halfStar::before {
-  content: '★';
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 50%;
-  overflow: hidden;
-  color: #00a680;
+.ratingValue {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 1.6rem;
+  color: var(--blue-dark);
 }
 
 .reviewCount {
-  font-size: 0.9rem;
-  color: #666;
+  color: var(--gray-dark);
+  font-size: 1rem;
+  letter-spacing: 0.5px;
 }
 
-.viewReviewsLink {
-  display: inline-block;
-  color: #00a0d2;
-  text-decoration: none;
-  font-weight: 500;
-  margin-top: 0.5rem;
-  transition: color 0.2s ease;
+/* --- Stelle --- */
+.stars {
+  display: inline-flex;
+  gap: 2px;
+  font-size: 1.2rem;
+  line-height: 1;
 }
 
-.viewReviewsLink:hover {
-  color: #006699;
-  text-decoration: underline;
+.starFull {
+  color: var(--blue-mid);
 }
 
-.taFallbackWidget {
+.starEmpty {
+  color: var(--blue-light);
+}
+
+/* --- Slider --- */
+.slider {
+  display: flex;
+  align-items: stretch;
+  gap: 0.5rem;
+}
+
+.slideViewport {
+  flex: 1;
+  min-height: 260px;
+  display: flex;
+  align-items: stretch;
+  overflow: hidden;
+}
+
+.reviewCard {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem;
+  margin: 0;
+  padding: 2.5rem 2rem 2rem;
+  background: #f7fafd;
+  border: 1px solid var(--blue-light);
+  border-radius: 8px;
+  box-shadow: 0 4px 18px var(--shadow);
+}
+
+.quoteMark {
+  position: absolute;
+  top: 0.2rem;
+  left: 1.2rem;
+  font-family: var(--font-heading);
+  font-size: 4.5rem;
+  line-height: 1;
+  color: var(--blue-light);
+  pointer-events: none;
+}
+
+
+.reviewText {
+  font-family: var(--font-body);
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--gray-dark);
+  max-width: 640px;
+  margin: 0;
+}
+
+.reviewAuthor {
+  font-family: var(--font-body);
+  font-weight: 600;
+  color: var(--blue-mid);
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
+}
+
+.reviewDate {
+  font-weight: 400;
+  color: var(--gray-dark);
+}
+
+/* --- Frecce --- */
+.arrow {
+  flex: 0 0 auto;
+  align-self: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--blue-light);
+  border-radius: 50%;
+  background: var(--white);
+  color: var(--blue-mid);
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.arrow:hover {
+  background: var(--blue-mid);
+  color: var(--white);
+}
+
+/* --- Dots --- */
+.dots {
   display: flex;
   justify-content: center;
-  margin-top: 0.5rem;
-} 
+  gap: 0.6rem;
+  margin: 1.5rem 0 2.2rem;
+}
+
+.dot,
+.dotActive {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  background: var(--blue-light);
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.dotActive {
+  background: var(--blue-mid);
+  transform: scale(1.25);
+}
+
+/* --- CTA --- */
+.ctaRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.readReviewsLink {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--blue-mid);
+  text-decoration: none;
+  border-bottom: 1px solid var(--blue-mid);
+  padding-bottom: 2px;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.readReviewsLink:hover {
+  color: var(--blue-dark);
+  border-color: var(--blue-dark);
+}
+
+.writeReviewBtn {
+  font-family: var(--font-heading);
+  font-weight: 500;
+  font-size: 0.95rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  color: var(--white);
+  background-color: #4a90e2;
+  padding: 0.8rem 1.8rem;
+  border-radius: 30px;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
+}
+
+.writeReviewBtn:hover {
+  background-color: #3bb0ff;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+/* --- Mobile --- */
+@media (max-width: 700px) {
+  .tripAdvisorSection {
+    padding: 3.5rem 1rem;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  .slideViewport {
+    min-height: 320px;
+  }
+
+  .reviewCard {
+    padding: 2.2rem 1.2rem 1.5rem;
+  }
+
+  .sectionTitle {
+    letter-spacing: 3px;
+  }
+}

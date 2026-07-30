@@ -1,33 +1,40 @@
-// PrenotaOraButton.jsx
+// PrenotaOraButton.jsx — bottone flottante presente su tutte le pagine (montato in _app).
+// Sulla home scrolla al form di prenotazione; sulle altre pagine porta al form della home.
 import React, { useEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import styles from './PrenotaOraButton.module.css';
 
 const PrenotaOraButton = () => {
   const [visible, setVisible] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
+    setVisible(true);
     const form = document.getElementById('reservation-form');
     const footer = document.querySelector('footer');
-    if (!form || !footer) return;
+    const targets = [form, footer].filter(Boolean);
+    if (!targets.length) return undefined;
 
     const observer = new IntersectionObserver(
       (entries) => {
-        // Il bottone è visibile solo se né il form né il footer sono visibili
-        const shouldHide = entries.some(entry => entry.isIntersecting);
+        // Il bottone si nasconde quando form o footer sono visibili
+        const shouldHide = entries.some((entry) => entry.isIntersecting);
         setVisible(!shouldHide);
       },
       { root: null, threshold: 0.5 }
     );
 
-    observer.observe(form);
-    observer.observe(footer);
+    targets.forEach((t) => observer.observe(t));
     return () => observer.disconnect();
-  }, []);
+  }, [router.asPath]);
 
   const handleClick = () => {
-    document
-      .getElementById('reservation-form')
-      .scrollIntoView({ behavior: 'smooth' });
+    const form = document.getElementById('reservation-form');
+    if (form) {
+      form.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      router.push('/#reservation-form');
+    }
   };
 
   return (

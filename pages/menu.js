@@ -5,21 +5,19 @@ import styles from '../src/pages/Menu.module.css';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { BsChevronDown, BsChevronUp, BsArrowLeftShort, BsArrowRightShort, BsX } from 'react-icons/bs';
-import TripAdvisorReviews from '../components/TripAdvisorReviews';
-import AnimatedText from '../components/AnimatedText';
 import ScrollReveal from '../components/ScrollReveal';
 
 // Percorsi delle immagini per gli allergeni
 const allergensIcons = {
-  soia: '/assets/soia.png',
-  latte: '/assets/latte.png',
-  glutine: '/assets/glutine.png',
-  arachidi: '/assets/arachidi.png',
-  uova: '/assets/uova.png',
-  crostacei: '/assets/crostacei.png',
-  molluschi: '/assets/molluschi.png',
-  frutta: '/assets/frutta.png',
-  pesce: '/assets/pesce.png'
+  soia: '/assets/soia.webp',
+  latte: '/assets/latte.webp',
+  glutine: '/assets/glutine.webp',
+  arachidi: '/assets/arachidi.webp',
+  uova: '/assets/uova.webp',
+  crostacei: '/assets/crostacei.webp',
+  molluschi: '/assets/molluschi.webp',
+  frutta: '/assets/frutta.webp',
+  pesce: '/assets/pesce.webp'
 };
 
 // Dati piatti completi
@@ -235,19 +233,19 @@ export default function Menu() {
 
   // Immagini per lo slider
   const sliderImages = [
-    '/assets/img_scelte/17.png',
-    '/assets/img_scelte/20.png',
-    '/assets/img_scelte/21.png',
-    '/assets/img_scelte/22.png',
-    '/assets/img_scelte/23.png',
-    '/assets/img_scelte/25.png',
-    '/assets/img_scelte/30.png'
+    '/assets/img_scelte/17.webp',
+    '/assets/img_scelte/20.webp',
+    '/assets/img_scelte/21.webp',
+    '/assets/img_scelte/22.webp',
+    '/assets/img_scelte/23.webp',
+    '/assets/img_scelte/25.webp',
+    '/assets/img_scelte/30.webp'
   ];
 
   // Immagini statiche
   const staticImages = [
-    '/assets/img_scelte/19.png',
-    '/assets/img_scelte/32.png'
+    '/assets/img_scelte/19.webp',
+    '/assets/img_scelte/32.webp'
   ];
 
   // Gestione responsive
@@ -325,7 +323,7 @@ export default function Menu() {
       {/* Sezione menu degustazione */}
       <section className={styles.degustazioneSection} style={{height: "600px"}}>
         <div className={styles.imagePart}>
-          <img src="/assets/1.png" alt="Menu degustazione" className={styles.degustazioneImage} />
+          <img src="/assets/1.webp" alt="Menu degustazione" className={styles.degustazioneImage} />
         </div>
         <div className={styles.textPart} style={{backgroundColor: "transparent"}}>
           <div className={styles.boxDegustazione} style={{marginTop: "-1px"}}>
@@ -484,6 +482,18 @@ export default function Menu() {
                           <div className={styles.detailsContainer}>
                             <div className={styles.dishInfo}>
                               <p className={styles.proposteDescription}>{dish.description}</p>
+                              {dish.allergens && dish.allergens.length > 0 && (
+                                <div className={styles.allergensContainer}>
+                                  {dish.allergens.filter((a) => allergensIcons[a]).map((allergen) => (
+                                    <span key={allergen} className={styles.allergenIcon}>
+                                      <img src={allergensIcons[allergen]} alt={`Allergene: ${allergen}`} loading="lazy" />
+                                      <span className={styles.allergenTooltip}>
+                                        {allergen.charAt(0).toUpperCase() + allergen.slice(1)}
+                                      </span>
+                                    </span>
+                                  ))}
+                                </div>
+                              )}
                             </div>
                           </div>
                         </motion.div>

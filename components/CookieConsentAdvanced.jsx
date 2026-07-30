@@ -3,46 +3,93 @@ import styles from './CookieConsentModal.module.css';
 
 const COOKIE_KEY = 'cookie_consent_v2';
 
+const GA_ID = 'G-W6BKEMZ0Z2';
+const META_PIXEL_ID = '1512719110645115';
+
 const defaultPrefs = {
   technical: true,  // Sempre attivi
   analytics: false, // Google Analytics, etc.
   marketing: false, // Marketing e profilazione
 };
 
+// Caricano i tracker SOLO dopo il consenso (GDPR): niente script in _app/_document.
+function loadGoogleAnalytics() {
+  if (window.__gaLoaded) return;
+  window.__gaLoaded = true;
+  const s = document.createElement('script');
+  s.async = true;
+  s.src = `https://www.googletagmanager.com/gtag/js?id=${GA_ID}`;
+  document.head.appendChild(s);
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = function gtag() { window.dataLayer.push(arguments); };
+  window.gtag('js', new Date());
+  window.gtag('config', GA_ID);
+}
+
+function loadMetaPixel() {
+  if (window.__fbqLoaded) return;
+  window.__fbqLoaded = true;
+  /* eslint-disable */
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  /* eslint-enable */
+  window.fbq('init', META_PIXEL_ID);
+  window.fbq('track', 'PageView');
+}
+
 const CookieConsentAdvanced = () => {
   const [open, setOpen] = useState(false);
-  const [prefs, setPrefs] = useState(defaultPrefs);
+  // consent = preferenze SALVATE (le uniche che attivano i tracker);
+  // draft = stato delle checkbox nel modale, senza effetti finché non si salva.
+  const [consent, setConsent] = useState(null);
+  const [draft, setDraft] = useState(defaultPrefs);
   const [showDetails, setShowDetails] = useState(false);
 
   useEffect(() => {
-    const saved = localStorage.getItem(COOKIE_KEY);
-    if (saved) {
-      setPrefs(JSON.parse(saved));
+    let saved = null;
+    try {
+      saved = JSON.parse(localStorage.getItem(COOKIE_KEY));
+    } catch {
+      localStorage.removeItem(COOKIE_KEY);
+    }
+    if (saved && typeof saved === 'object') {
+      const merged = { ...defaultPrefs, ...saved };
+      setConsent(merged);
+      setDraft(merged);
     } else {
       setOpen(true);
     }
   }, []);
 
   useEffect(() => {
-    // Gestione cookie analytics
-    if (prefs.analytics) {
-      // Qui inserire il codice per attivare Google Analytics o altri strumenti di analytics
-    }
-
-    // Gestione cookie marketing
-    if (prefs.marketing) {
-      // Qui inserire il codice per attivare pixel di marketing, remarketing, etc.
-    }
-  }, [prefs]);
+    if (!consent) return;
+    if (consent.analytics) loadGoogleAnalytics();
+    if (consent.marketing) loadMetaPixel();
+  }, [consent]);
 
   const handleChange = (e) => {
     const { name, checked } = e.target;
-    setPrefs((prev) => ({ ...prev, [name]: checked }));
+    setDraft((prev) => ({ ...prev, [name]: checked }));
   };
 
   const savePrefs = (newPrefs) => {
     localStorage.setItem(COOKIE_KEY, JSON.stringify(newPrefs));
-    setPrefs(newPrefs);
+    // Se un tracker già caricato viene revocato, ricarica la pagina per rimuoverlo davvero.
+    const revoked =
+      (window.__gaLoaded && !newPrefs.analytics) ||
+      (window.__fbqLoaded && !newPrefs.marketing);
+    if (revoked) {
+      window.location.reload();
+      return;
+    }
+    setConsent(newPrefs);
+    setDraft(newPrefs);
     setOpen(false);
   };
 
@@ -57,7 +104,7 @@ const CookieConsentAdvanced = () => {
   };
 
   const handleSave = () => {
-    savePrefs(prefs);
+    savePrefs(draft);
   };
 
   // Per il link nel footer
@@ -102,7 +149,7 @@ const CookieConsentAdvanced = () => {
               type="checkbox"
               id="analytics"
               name="analytics"
-              checked={prefs.analytics}
+              checked={draft.analytics}
               onChange={handleChange}
             />
             <label htmlFor="analytics">
@@ -121,7 +168,7 @@ const CookieConsentAdvanced = () => {
               type="checkbox"
               id="marketing"
               name="marketing"
-              checked={prefs.marketing}
+              checked={draft.marketing}
               onChange={handleChange}
             />
             <label htmlFor="marketing">

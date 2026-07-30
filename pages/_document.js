@@ -4,37 +4,8 @@ export default function Document() {
   return (
     <Html lang="it">
       <Head>
-        {/* Google tag (gtag.js) */}
-        <script async src="https://www.googletagmanager.com/gtag/js?id=G-W6BKEMZ0Z2"></script>
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-
-            gtag('config', 'G-W6BKEMZ0Z2');
-          `
-        }} />
-
-        {/* Meta Pixel Code */}
-        <script dangerouslySetInnerHTML={{
-          __html: `
-            !function(f,b,e,v,n,t,s)
-            {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-            n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-            if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-            n.queue=[];t=b.createElement(e);t.async=!0;
-            t.src=v;s=b.getElementsByTagName(e)[0];
-            s.parentNode.insertBefore(t,s)}(window, document,'script',
-            'https://connect.facebook.net/en_US/fbevents.js');
-            fbq('init', '1512719110645115');
-            fbq('track', 'PageView');
-          `
-        }} />
-        <noscript dangerouslySetInnerHTML={{
-          __html: `<img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=1512719110645115&ev=PageView&noscript=1" />`
-        }} />
-        {/* End Meta Pixel Code */}
+        {/* Google Analytics e Meta Pixel sono caricati da CookieConsentAdvanced
+            solo dopo il consenso dell'utente (GDPR). */}
 
         {/* Favicon */}
         <link rel="icon" href="/favicon.ico" type="image/x-icon" />
@@ -44,13 +15,17 @@ export default function Document() {
         {/* Preconnect per performance */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="true" />
+
+        {/* Google Fonts (fogli di stile, non script) */}
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Tangerine:wght@400;700&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Lexend+Deca:wght@100..900&family=Lexend+Giga:wght@100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap" />
         
         {/* Manifest per PWA */}
         <link rel="manifest" href="/manifest.json" />
         
         {/* Meta per crawling */}
         <meta name="facebook-domain-verification" content="wzk12k59ztwfprpu20b2ixcqq8gqxc" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         
         {/* CSS inlining critico */}

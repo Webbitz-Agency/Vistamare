@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import AnimatedText from '../components/AnimatedText'
 import grazieStyles from '../src/pages/Grazie.module.css'
+import { trackConversion } from '../lib/track'
 
 /**
  * Pagina dedicata alle conversioni lead (Meta Ads / Pixel).
@@ -14,9 +15,10 @@ import grazieStyles from '../src/pages/Grazie.module.css'
  */
 export default function Grazie() {
   useEffect(() => {
-    if (typeof window !== 'undefined' && typeof window.fbq === 'function') {
-      window.fbq('track', 'Lead')
-    }
+    // One-shot per sessione: refresh o back/forward non rigenerano la conversione
+    if (sessionStorage.getItem('lead_tracked')) return
+    sessionStorage.setItem('lead_tracked', '1')
+    trackConversion('Lead', { content_name: 'form_prenotazione' })
   }, [])
 
   return (

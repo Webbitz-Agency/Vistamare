@@ -5,7 +5,7 @@ import ScrollReveal from './ScrollReveal';
 // Immagini referenziate direttamente nel JSX
 
 const PhilosophySection = () => {
-  const images = ['/assets/filosofia1.png', '/assets/filosofia2.png', '/assets/filosofia3.png', '/assets/filosofia4.png'];
+  const images = ['/assets/filosofia1.webp', '/assets/filosofia2.webp', '/assets/filosofia3.webp', '/assets/filosofia4.webp'];
   const [current, setCurrent] = useState(0);
 
   const nextSlide = () => {

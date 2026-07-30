@@ -213,8 +213,7 @@ const ReservationForm = () => {
           Di cui bambini: ${formData.children}
           
           Note aggiuntive: ${formData.message || 'Nessuna nota'}
-        `,
-        token: "wdgc smro okea heia" // Token per autenticazione
+        `
       };
       
       // Invio dell'email tramite API server-side

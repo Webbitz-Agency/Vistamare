@@ -3,12 +3,13 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Carousel from '../components/Carousel'
 import ReservationForm from '../components/ReservationForm'
-import PrenotaOraButton from '../components/PrenotaOraButton'
 import PhilosophySection from '../components/PhilosophySection'
 import GallerySlider from '../components/GallerySlider'
 import ModernLinksSection from '../components/ModernLinksSection'
 import AnimatedText from '../components/AnimatedText'
 import ScrollReveal from '../components/ScrollReveal'
+import TripAdvisorReviews from '../components/TripAdvisorReviews'
+import { trackConversion, PHONE_NUMBER, PHONE_DISPLAY } from '../lib/track'
 import styles from '../src/pages/Home.module.css'
 
 export default function Home() {
@@ -40,10 +41,10 @@ export default function Home() {
               "email": "vistamarerosignano@gmail.com",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Via della Repubblica, 2",
+                "streetAddress": "Via del Popolo, 76",
                 "addressLocality": "Rosignano Solvay",
                 "addressRegion": "Toscana",
-                "postalCode": "57013",
+                "postalCode": "57016",
                 "addressCountry": "IT"
               },
               "geo": {
@@ -56,7 +57,7 @@ export default function Home() {
               "acceptsReservations": true,
               "hasMenu": "https://vistamarerosignano.it/menu",
               "openingHours": [
-                "Tu-Su 19:30-23:00"
+                "Mo-Su 12:30-14:30", "Mo-Su 19:30-22:00"
               ],
               "areaServed": [
                 "Rosignano Solvay",
@@ -87,10 +88,10 @@ export default function Home() {
               "description": "Il miglior ristorante di pesce tra Castiglioncello e Rosignano Solvay. Specialità di mare, crudi di pesce e cucina gourmet con vista mare.",
               "address": {
                 "@type": "PostalAddress",
-                "streetAddress": "Via della Repubblica, 2",
+                "streetAddress": "Via del Popolo, 76",
                 "addressLocality": "Rosignano Solvay",
                 "addressRegion": "Toscana",
-                "postalCode": "57013",
+                "postalCode": "57016",
                 "addressCountry": "IT"
               },
               "geo": {
@@ -101,7 +102,7 @@ export default function Home() {
               "url": "https://vistamarerosignano.it",
               "telephone": "+39 0586 762289",
               "email": "vistamarerosignano@gmail.com",
-              "openingHours": "Tu-Su 19:30-23:00",
+              "openingHours": ["Mo-Su 12:30-14:30", "Mo-Su 19:30-22:00"],
               "paymentAccepted": "Cash, Credit Card",
               "currenciesAccepted": "EUR"
             })
@@ -114,7 +115,6 @@ export default function Home() {
       <div>
         <Carousel />
       </div>
-      <PrenotaOraButton />
       
       <div className={styles.contentSection}>
         <section className={styles.intro}>
@@ -176,13 +176,34 @@ export default function Home() {
         </div>
       </div>
 
+      <TripAdvisorReviews />
+
       <section className={styles.reservationStrip} id="reservation-form">
         <AnimatedText delay={300}>
           <h2>Ti aspettiamo</h2>
         </AnimatedText>
-        <AnimatedText delay={300}>
+        <div className={styles.reservationColumns}>
+          <div className={styles.callPanel}>
+            <i className={`fa-solid fa-phone ${styles.callPanelIcon}`} aria-hidden="true"></i>
+            <h3 className={styles.callPanelTitle}>Prenota subito</h3>
+            <p className={styles.callPanelText}>
+              Il modo più veloce: chiamaci e conferma il tuo tavolo in un minuto.
+            </p>
+            <a
+              href={`tel:${PHONE_NUMBER}`}
+              className={styles.callNowButton}
+              onClick={() => trackConversion('Contact', { content_name: 'chiamata_sezione_prenota' })}
+            >
+              Chiama ora
+            </a>
+            <span className={styles.callPanelNumber}>{PHONE_DISPLAY}</span>
+            <p className={styles.callPanelHours}>Tutti i giorni · 12:30–14:30 / 19:30–22:00</p>
+            <p className={styles.callPanelAlt}>
+              Oppure invia una richiesta con il modulo: ti ricontatteremo per confermare.
+            </p>
+          </div>
           <ReservationForm />
-        </AnimatedText>
+        </div>
       </section>
 
       <Footer />

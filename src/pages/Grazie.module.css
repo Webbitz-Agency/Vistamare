@@ -23,7 +23,7 @@
   /* Altezza dell’area visibile sotto l’header: quasi tutto il primo schermo è foto */
   min-height: calc(100svh - 70px - env(safe-area-inset-top, 0px));
   padding: 2rem 1.25rem 2.5rem;
-  background-image: url('/assets/img_scelte/26.png');
+  background-image: url('/assets/img_scelte/26.webp');
   background-size: cover;
   /* Punto focale leggermente più basso così non “taglia” il cielo/chiaro in alto */
   background-position: center 42%;

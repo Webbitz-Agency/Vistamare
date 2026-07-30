@@ -4,11 +4,11 @@ import styles from './Carousel.module.css';
 function Carousel() {
   // Immagini per il carosello
   const sliderImages = [
-    '../assets/2.png',
-    '../assets/18.png',
-    '../assets/19.png',
-    '../assets/15.png',
-    '../assets/16.png'
+    '/assets/2.webp',
+    '/assets/18.webp',
+    '/assets/19.webp',
+    '/assets/15.webp',
+    '/assets/16.webp'
   ];
 
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -90,7 +90,7 @@ function Carousel() {
         {/* Overlay con logo e testo */}
         <div className={styles.overlay}>
          {/* <img 
-            src="../assets/logo.png" 
+            src="/assets/logo.png" 
             alt="Vistamare Logo" 
             className={styles.logo} 
           />*/}

@@ -2,31 +2,49 @@ import '../src/index.css'
 import '../src/App.css'
 import '../styles/datepicker.css'
 import '../components/ScrollProgress.css'
-import Script from 'next/script'
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { Analytics } from '@vercel/analytics/react'
 import ScrollProgress from '../components/ScrollProgress'
 import CustomCursor from '../components/CustomCursor'
+import PrenotaOraButton from '../components/PrenotaOraButton'
 import SmoothScroll from '../components/SmoothScroll'
 import CookieConsentAdvanced from '../components/CookieConsentAdvanced'
 import { useEffect, useState } from 'react'
 
 export default function App({ Component, pageProps }) {
   const [isDesktop, setIsDesktop] = useState(true)
+  const router = useRouter()
 
   useEffect(() => {
     const handleResize = () => {
       setIsDesktop(window.innerWidth >= 769)
     }
-    
+
     handleResize()
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  // PageView sulle navigazioni interne (SPA): GA e Pixel lo inviano solo
+  // al primo caricamento, qui copriamo i cambi di rotta client-side.
+  useEffect(() => {
+    const handleRouteChange = (url) => {
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'page_view', { page_path: url })
+      }
+      if (typeof window.fbq === 'function') {
+        window.fbq('track', 'PageView')
+      }
+    }
+    router.events.on('routeChangeComplete', handleRouteChange)
+    return () => router.events.off('routeChangeComplete', handleRouteChange)
+  }, [router.events])
+
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
         {/* FontAwesome */}
         <link 
           rel="stylesheet" 
@@ -37,39 +55,16 @@ export default function App({ Component, pageProps }) {
         />
       </Head>
       
-      {/* Google Analytics */}
-      <Script
-        src="https://www.googletagmanager.com/gtag/js?id=G-W6BKEMZ0Z2"
-        strategy="afterInteractive"
-      />
-      <Script id="google-analytics" strategy="afterInteractive">
-        {`
-          window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          gtag('config', 'G-W6BKEMZ0Z2');
-        `}
-      </Script>
-      
-      {/* Google Fonts */}
-      <Script
-        src="https://fonts.googleapis.com/css2?family=Lexend+Zetta:wght@100..900&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Tangerine:wght@400;700&display=swap"
-        strategy="beforeInteractive"
-      />
-      <Script
-        src="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Lexend+Deca:wght@100..900&family=Lexend+Giga:wght@100..900&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap"
-        strategy="beforeInteractive"
-      />
-      <Script
-        src="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
-        strategy="beforeInteractive"
-      />
+      {/* Google Analytics e Meta Pixel vengono caricati da CookieConsentAdvanced
+          solo dopo il consenso dell'utente (GDPR).
+          I Google Fonts sono in _document.js come <link rel="stylesheet">. */}
 
       <div className="App">
         <CookieConsentAdvanced />
         {isDesktop && <CustomCursor />}
         <SmoothScroll />
         <ScrollProgress />
+        <PrenotaOraButton />
         <Component {...pageProps} />
         <Analytics />
       </div>

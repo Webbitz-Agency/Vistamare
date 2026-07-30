@@ -1,0 +1,16 @@
+{
+  "name": "Ristorante Vistamare",
+  "short_name": "Vistamare",
+  "description": "Ristorante di pesce fresco a Rosignano Solvay, sulla costa toscana.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#04062d",
+  "theme_color": "#04062d",
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "any",
+      "type": "image/png"
+    }
+  ]
+}

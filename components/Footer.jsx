@@ -131,7 +131,7 @@ export default function Footer() {
         <div className={styles.legalLinksFull}>
           <a href="/privacypolicy">Privacy Policy</a>
           <a href="/cookiepolicy">Cookie Policy</a>
-          <a href="#" onClick={() => window.openCookieModal()}>Gestisci cookie</a>
+          <a href="#" onClick={(e) => { e.preventDefault(); if (typeof window.openCookieModal === 'function') window.openCookieModal(); }}>Gestisci cookie</a>
           <a href="https://webbitz.it" target="_blank" rel="noopener noreferrer">Sito realizzato da Webbitz</a>
         </div>
       </div>

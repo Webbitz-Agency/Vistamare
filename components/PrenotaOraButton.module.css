@@ -40,9 +40,10 @@
 @media (max-width: 600px) {
   .prenotaButton {
     bottom: 16px;
-    right: 0;
-    padding: 0.8rem 1.2rem;
-    font-size: 1rem;
-    border-radius: 12px;
+    right: 16px;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    letter-spacing: 2px;
+    border-radius: 30px;
   }
 } 

@@ -258,7 +258,7 @@
 /* Sezione parallax */
 .parallaxSection {
   height: 70vh;
-  background-image: url('/assets/cantina2.png');
+  background-image: url('/assets/cantina2.webp');
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;

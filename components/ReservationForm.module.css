@@ -1,6 +1,6 @@
 .formContainer {
   position: relative;
-  width: 70%;
+  width: 100%;
   max-width: none;
   margin: 0 auto;
   padding: 3rem;
@@ -9,7 +9,6 @@
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   border: 2px solid rgb(255, 255, 255);
-  margin-top: -0.75rem;
   opacity: 0;
   transform: translateY(20px);
   animation: formAppear 0.5s ease forwards;
@@ -401,9 +400,9 @@ select.input {
 /* Responsive */
 @media (max-width: 768px) {
   .formContainer {
-    width: 90%;
+    width: 100%;
     padding: 1.5rem;
-    margin-top: 1rem;
+    margin-top: 0;
   }
 
   .formHeader h2 {
