@@ -30,8 +30,15 @@
 .logo {
   max-width: 200px;
   height: auto;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   filter: brightness(0) invert(1);
+}
+
+.formTagline {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  color: var(--blue-light);
+  margin: 0 0 1.2rem;
 }
 
 .formHeader h2 {
@@ -49,8 +56,8 @@
 }
 
 .step {
-  width: 30px;
-  height: 30px;
+  width: 22px;
+  height: 22px;
   border-radius: 50%;
   background: rgba(255, 255, 255, 0.2);
   position: relative;

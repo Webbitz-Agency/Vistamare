@@ -297,12 +297,15 @@ const ReservationForm = () => {
         variants={containerVariants}
       >
         <div className={styles.formHeader}>
-          <motion.img 
-                            src="/assets/logo.png" 
-            alt="Logo" 
+          <motion.img
+                            src="/assets/logo.png"
+            alt="Logo"
             className={styles.logo}
             variants={itemVariants}
           />
+          <motion.p className={styles.formTagline} variants={itemVariants}>
+            Non puoi chiamare? Prenota qui sotto!
+          </motion.p>
           <motion.div className={styles.steps} variants={itemVariants}>
             {[1, 2, 3].map(step => (
               <div

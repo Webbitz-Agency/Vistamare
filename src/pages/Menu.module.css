@@ -297,12 +297,12 @@
   justify-content: center;
   cursor: help;
   border-radius: 50%;
-  background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Le icone ufficiali sono già cerchi colorati: riempiono tutto lo spazio */
 .allergenIcon img {
-  width: 80%;
-  height: 80%;
+  width: 100%;
+  height: 100%;
   object-fit: contain;
 }
 

@@ -50,7 +50,7 @@ export default function Header() {
           onClick={() => trackConversion('Contact', { content_name: 'chiamata_navbar' })}
         >
           <i className="fa-solid fa-phone" aria-hidden="true"></i>
-          <span>Prenota ora</span>
+          <span>Chiama ora</span>
         </a>
       </nav>
       </div>

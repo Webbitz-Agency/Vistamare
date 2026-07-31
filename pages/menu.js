@@ -7,7 +7,7 @@ import Footer from '../components/Footer';
 import { BsChevronDown, BsChevronUp, BsArrowLeftShort, BsArrowRightShort, BsX } from 'react-icons/bs';
 import ScrollReveal from '../components/ScrollReveal';
 
-// Percorsi delle immagini per gli allergeni
+// Percorsi delle immagini per gli allergeni (icone ufficiali)
 const allergensIcons = {
   soia: '/assets/soia.webp',
   latte: '/assets/latte.webp',
@@ -17,7 +17,30 @@ const allergensIcons = {
   crostacei: '/assets/crostacei.webp',
   molluschi: '/assets/molluschi.webp',
   frutta: '/assets/frutta.webp',
-  pesce: '/assets/pesce.webp'
+  pesce: '/assets/pesce.webp',
+  sesamo: '/assets/sesamo.webp',
+  lupini: '/assets/lupini.webp',
+  senape: '/assets/senape.webp',
+  sedano: '/assets/sedano.webp',
+  solfiti: '/assets/solfiti.webp'
+};
+
+// Etichette mostrate nel tooltip (nomi corretti degli allergeni)
+const allergensLabels = {
+  soia: 'Soia',
+  latte: 'Latte e derivati',
+  glutine: 'Glutine',
+  arachidi: 'Arachidi e derivati',
+  uova: 'Uova e derivati',
+  crostacei: 'Crostacei',
+  molluschi: 'Molluschi',
+  frutta: 'Frutta a guscio',
+  pesce: 'Pesce',
+  sesamo: 'Sesamo',
+  lupini: 'Lupini',
+  senape: 'Senape',
+  sedano: 'Sedano',
+  solfiti: 'Anidride solforosa e solfiti'
 };
 
 // Dati piatti completi
@@ -486,9 +509,9 @@ export default function Menu() {
                                 <div className={styles.allergensContainer}>
                                   {dish.allergens.filter((a) => allergensIcons[a]).map((allergen) => (
                                     <span key={allergen} className={styles.allergenIcon}>
-                                      <img src={allergensIcons[allergen]} alt={`Allergene: ${allergen}`} loading="lazy" />
+                                      <img src={allergensIcons[allergen]} alt={`Allergene: ${allergensLabels[allergen] || allergen}`} loading="lazy" />
                                       <span className={styles.allergenTooltip}>
-                                        {allergen.charAt(0).toUpperCase() + allergen.slice(1)}
+                                        {allergensLabels[allergen] || allergen}
                                       </span>
                                     </span>
                                   ))}
