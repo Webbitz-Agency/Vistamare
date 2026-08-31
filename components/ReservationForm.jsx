@@ -7,7 +7,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import { registerLocale } from 'react-datepicker';
 import it from 'date-fns/locale/it';
-import { format, isToday, isBefore, addDays } from 'date-fns';
+import { format, isToday, isBefore, addDays, getDay } from 'date-fns';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
@@ -85,6 +85,8 @@ const ReservationForm = () => {
     }
   };
 
+  const isClosedDay = (date) => getDay(date) === 2; // Martedì
+
   const handleDateChange = (date) => {
     setFormData(prev => ({
       ...prev,
@@ -96,6 +98,11 @@ const ReservationForm = () => {
       setErrors(prev => ({
         ...prev,
         date: 'La data deve essere oggi o nel futuro'
+      }));
+    } else if (date && isClosedDay(date)) {
+      setErrors(prev => ({
+        ...prev,
+        date: 'Siamo chiusi il martedì'
       }));
     } else {
       setErrors(prev => {
@@ -131,6 +138,9 @@ const ReservationForm = () => {
       // Controlla che la data sia valida
       else if (isBefore(formData.date, today) && !isToday(formData.date)) {
         newErrors.date = 'La data deve essere oggi o nel futuro';
+        hasErrors = true;
+      } else if (isClosedDay(formData.date)) {
+        newErrors.date = 'Siamo chiusi il martedì';
         hasErrors = true;
       }
 
@@ -176,6 +186,8 @@ const ReservationForm = () => {
     
     if (formData.date && isBefore(formData.date, today) && !isToday(formData.date)) {
       validationErrors.date = 'La data deve essere oggi o nel futuro';
+    } else if (formData.date && isClosedDay(formData.date)) {
+      validationErrors.date = 'Siamo chiusi il martedì';
     }
     
     const guests = parseInt(formData.guests);
@@ -401,6 +413,7 @@ const ReservationForm = () => {
                             onChange={handleDateChange}
                             dateFormat="dd/MM/yyyy"
                             minDate={today}
+                            filterDate={(date) => !isClosedDay(date)}
                             locale="it"
                             className={styles.datepicker}
                             calendarClassName={styles.calendar}

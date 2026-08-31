@@ -52,9 +52,10 @@ export default function Footer() {
         {/* Orari */}
         <div className={styles.column}>
           <h3>Orari</h3>
-          <p>Lunedì - Domenica:</p>
+          <p>Lunedì, Mercoledì - Domenica:</p>
           <p>12:30 - 14:30</p>
           <p>19:30 - 22:00</p>
+          <p>Martedì: chiuso</p>
         </div>
 
         {/* Mappa Mobile - con stile inline per forzare la visualizzazione */}

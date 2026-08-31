@@ -57,7 +57,10 @@ export default function Home() {
               "acceptsReservations": true,
               "hasMenu": "https://vistamarerosignano.it/menu",
               "openingHours": [
-                "Mo-Su 12:30-14:30", "Mo-Su 19:30-22:00"
+                "Mo 12:30-14:30",
+                "Mo 19:30-22:00",
+                "We-Su 12:30-14:30",
+                "We-Su 19:30-22:00"
               ],
               "areaServed": [
                 "Rosignano Solvay",
@@ -102,7 +105,12 @@ export default function Home() {
               "url": "https://vistamarerosignano.it",
               "telephone": "+39 0586 762289",
               "email": "vistamarerosignano@gmail.com",
-              "openingHours": ["Mo-Su 12:30-14:30", "Mo-Su 19:30-22:00"],
+              "openingHours": [
+                "Mo 12:30-14:30",
+                "Mo 19:30-22:00",
+                "We-Su 12:30-14:30",
+                "We-Su 19:30-22:00"
+              ],
               "paymentAccepted": "Cash, Credit Card",
               "currenciesAccepted": "EUR"
             })
